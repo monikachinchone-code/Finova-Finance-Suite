@@ -7,7 +7,7 @@
 // =============================================================
 
 const CONFIG = {
-    API_BASE: "http://localhost:8080/api",
+   const API_BASE = "https://finova-finance-suite-3.onrender.com/api";
 
     ENDPOINTS: {
         login: "/auth/login",

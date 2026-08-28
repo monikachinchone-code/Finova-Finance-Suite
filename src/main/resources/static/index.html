@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+
+  <title>Expense Tracker · Full Stack</title>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- =========================================================
+       LOGIN / REGISTER OVERLAY
+       ========================================================= -->
+
+  <!-- =========================================================
+     PREMIUM LOGIN / REGISTER
+     ========================================================= -->
+
+<div class="login-overlay" id="loginOverlay">
+
+    <div class="login-card" id="loginCard">
+
+        <!-- LEFT BRANDING PANEL -->
+        <div class="login-brand-panel">
+
+            <div class="brand-badge">
+                <i class="fas fa-wallet"></i>
+                <span>Expense</span>
+            </div>
+
+            <div class="brand-content">
+                <span class="brand-eyebrow">SMART FINANCE</span>
+
+                <h1>
+                    Take control of
+                    <span>your money.</span>
+                </h1>
+
+                <p>
+                    Track expenses, manage budgets and understand
+                    your financial habits — all in one place.
+                </p>
+            </div>
+
+            <div class="brand-features">
+
+                <div class="brand-feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+
+                    <div>
+                        <strong>Track Smarter</strong>
+                        <small>Monitor your income & expenses</small>
+                    </div>
+                </div>
+
+                <div class="brand-feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+
+                    <div>
+                        <strong>Plan Better</strong>
+                        <small>Set budgets and stay on target</small>
+                    </div>
+                </div>
+
+                <div class="brand-feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+
+                    <div>
+                        <strong>Analyze Easily</strong>
+                        <small>Understand where your money goes</small>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="brand-footer">
+                <i class="fas fa-shield-halved"></i>
+                Your financial data stays organized and secure.
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT FORM PANEL -->
+        <div class="login-form-panel">
+
+            <div class="mobile-logo">
+                <i class="fas fa-wallet"></i>
+                <span>Expense</span>
+            </div>
+
+            <div class="form-heading">
+
+                <span class="welcome-label">
+                    WELCOME BACK
+                </span>
+
+                <h2 id="loginHeading">
+                    Welcome back 👋
+                </h2>
+
+                <p id="loginSubheading">
+                    Sign in to continue to your dashboard.
+                </p>
+
+            </div>
+
+
+            <!-- Error Message -->
+            <div class="error-msg" id="loginError">
+                Invalid credentials
+            </div>
+
+
+            <!-- LOGIN FIELDS -->
+            <div class="login-fields">
+
+                <div class="form-group">
+
+                    <label for="loginEmail">
+                        Email / Username
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fas fa-user"></i>
+
+                        <input
+                            type="text"
+                            id="loginEmail"
+                            placeholder="john@example.com"
+                            value="demo@demo.com"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="loginPassword">
+                        Password
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fas fa-lock"></i>
+
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            placeholder="Enter your password"
+                            value="password123"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <button class="btn login-main-btn" id="loginBtn">
+
+                    <span>Log In</span>
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </button>
+
+            </div>
+
+
+            <!-- REGISTER FIELDS -->
+            <div class="register-fields">
+
+                <div class="form-group">
+
+                    <label for="regName">
+                        Full Name
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fas fa-user"></i>
+
+                        <input
+                            type="text"
+                            id="regName"
+                            placeholder="John Doe"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="regEmail">
+                        Email
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fas fa-envelope"></i>
+
+                        <input
+                            type="email"
+                            id="regEmail"
+                            placeholder="john@example.com"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="regPassword">
+                        Password
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fas fa-lock"></i>
+
+                        <input
+                            type="password"
+                            id="regPassword"
+                            placeholder="Create a password"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="regConfirm">
+                        Confirm Password
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fas fa-check-circle"></i>
+
+                        <input
+                            type="password"
+                            id="regConfirm"
+                            placeholder="Confirm your password"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <button class="btn login-main-btn" id="registerBtn">
+
+                    <span>Create Account</span>
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </button>
+
+            </div>
+
+
+            <!-- SWITCH -->
+            <div class="switch-link">
+
+                <span id="switchText">
+                    Don't have an account?
+
+                    <a href="#" id="switchLink">
+                        Create one
+                    </a>
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+
+<!-- =========================================================
+     SIDEBAR
+     ========================================================= -->
+
+<!-- =========================================================
+     SIDEBAR
+     ========================================================= -->
+
+<aside class="sidebar" id="sidebar">
+
+    <!-- Logo -->
+    <div class="logo">
+        <i class="fas fa-wallet"></i>
+        <span>Expense</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+      <!-- Dashboard -->
+
+      <a
+        href="#"
+        class="active"
+        data-page="dashboard"
+      >
+
+        <i class="fas fa-chart-pie"></i>
+
+        <span>
+          Dashboard
+        </span>
+
+      </a>
+
+
+      <!-- Income -->
+
+      <a
+        href="#"
+        data-page="income"
+      >
+
+        <i class="fas fa-arrow-up"></i>
+
+        <span>
+          Income
+        </span>
+
+      </a>
+
+
+      <!-- Expenses -->
+
+      <a
+        href="#"
+        data-page="expenses"
+      >
+
+        <i class="fas fa-arrow-down"></i>
+
+        <span>
+          Expenses
+        </span>
+
+      </a>
+
+
+      <!-- Categories -->
+
+      <a
+        href="#"
+        data-page="categories"
+      >
+
+        <i class="fas fa-tags"></i>
+
+        <span>
+          Categories
+        </span>
+
+      </a>
+
+
+      <!-- Budget -->
+
+      <a
+        href="#"
+        data-page="budget"
+        onclick="console.log('🔥 BUDGET HTML CLICKED'); navigateTo('budget'); return false;"
+      >
+
+        <i class="fas fa-coins"></i>
+
+        <span>
+          Budget
+        </span>
+
+      </a>
+
+
+      <!-- Reports -->
+
+      <a
+        href="#"
+        data-page="reports"
+      >
+
+        <i class="fas fa-file-alt"></i>
+
+        <span>
+          Reports
+        </span>
+
+      </a>
+
+
+      <!-- Profile -->
+
+      <a
+        href="#"
+        data-page="profile"
+      >
+
+        <i class="fas fa-user"></i>
+
+        <span>
+          Profile
+        </span>
+
+      </a>
+
+
+      <!-- Logout -->
+
+      <a
+        href="#"
+        class="logout-link"
+        id="logoutBtn"
+      >
+
+        <i class="fas fa-sign-out-alt"></i>
+
+        <span>
+          Logout
+        </span>
+
+      </a>
+
+    </nav>
+
+  </aside>
+
+
+
+  <!-- =========================================================
+       MAIN CONTENT
+       ========================================================= -->
+
+  <div
+    class="main-content"
+    id="mainContent"
+  >
+
+    <!-- Top Bar -->
+
+    <div class="topbar">
+
+      <h2 id="pageTitle">
+        Dashboard
+      </h2>
+
+
+     <!-- Notifications -->
+
+<div class="notification-wrapper">
+
+  <button
+    class="notification-btn"
+    id="notificationBtn"
+    type="button"
+  >
+    <i class="fas fa-bell"></i>
+
+    <span
+      class="notification-count"
+      id="notificationCount"
+    >0</span>
+  </button>
+
+  <div
+    class="notification-panel"
+    id="notificationPanel"
+  >
+
+    <h4>🔔 Notifications</h4>
+
+    <div id="notificationList">
+      <p>No new notifications</p>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- User Badge -->
+
+<div class="user-badge">
+
+  <i class="fas fa-user-circle"></i>
+
+  <span id="userNameDisplay">
+    John Doe
+  </span>
+
+</div>
+
+    </div>
+
+
+    <!-- Dynamic Page Container -->
+
+    <div id="pageContainer"></div>
+
+  </div>
+
+
+
+  <!-- =========================================================
+       MODAL
+       ========================================================= -->
+
+  <div
+    class="modal-overlay"
+    id="modalOverlay"
+  >
+
+    <div
+      class="modal-box"
+      id="modalBox"
+    >
+
+      <h3 id="modalTitle">
+        Edit
+      </h3>
+
+
+      <!-- Dynamic Modal Body -->
+
+      <div id="modalBody"></div>
+
+
+      <!-- Modal Buttons -->
+
+      <div
+        style="
+          display:flex;
+          gap:12px;
+          margin-top:1.2rem;
+          justify-content:flex-end;
+        "
+      >
+
+        <button
+          class="btn btn-outline"
+          id="modalCancel"
+        >
+
+          Cancel
+
+        </button>
+
+
+        <button
+          class="btn btn-primary"
+          id="modalSave"
+        >
+
+          Save
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =========================================================
+       TOAST MESSAGE
+       ========================================================= -->
+
+  <div
+    class="toast"
+    id="toast"
+  ></div>
+
+
+
+  <!-- =========================================================
+       JAVASCRIPT
+       ========================================================= -->
+
+  <script src="script.js"></script>
+
+</body>
+</html>

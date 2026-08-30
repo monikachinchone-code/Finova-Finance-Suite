@@ -7,7 +7,7 @@
 // =============================================================
 
 const CONFIG = {
-    API_BASE = "/api",
+    API_BASE: "/api",
 
     ENDPOINTS: {
         login: "/auth/login",
